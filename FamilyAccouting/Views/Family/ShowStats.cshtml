@@ -1,0 +1,77 @@
+﻿@model Family
+@inject FamilyAccounting.Data.Helpers.UserProvider userP
+@using FamilyAccounting.Data.Entities
+
+<h1>@Model.FamilyName oilasi</h1>
+
+<br/>
+<a class="btn btn-primary" asp-controller="Family" asp-action="Profile1">Stats</a>
+
+@{
+    <a class="btn btn-primary" asp-action="Joinfamily" asp-route-familyid="@Model.Id">join</a>
+    foreach (var user in Model.Users)
+    {
+        <h3>@user.FirstName</h3>
+    }
+}
+
+@{
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Status</th>
+                <th scope="col">Sum of Incomes</th>
+                <th scope="col">Sum of Expenses</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Users.Count; i++)
+            {
+                <tr>
+                    <th scope="row">@(i + 1)</th>
+                    <td>@Model.Users[i].FirstName</td>
+                    <td>@Model.Users[i].LastName</td>
+                    
+
+                    @{
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdwn">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        @Model.Users[i].UserType
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-controller="family" asp-action="UpdateUserFamilyRole" asp-route-familyId="@Model.Id" asp-route-userId="@Model.Users[i].Id" asp-route-role="@EUserType.Father">Father</a></li>
+                                        <li><a class="dropdown-item" asp-controller="family" asp-action="UpdateUserFamilyRole" asp-route-familyId="@Model.Id" asp-route-userId="@Model.Users[i].Id" asp-route-role="@EUserType.Mother">Mother</a></li>
+                                        <li><a class="dropdown-item" asp-controller="family" asp-action="UpdateUserFamilyRole" asp-route-familyId="@Model.Id" asp-route-userId="@Model.Users[i].Id" asp-route-role="@EUserType.Son">Son</a></li>
+                                        <li><a class="dropdown-item" asp-controller="family" asp-action="UpdateUserFamilyRole" asp-route-familyId="@Model.Id" asp-route-userId="@Model.Users[i].Id" asp-route-role="@EUserType.Doughter">Doughter</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    }
+                    @{
+                        var uIncome = 0; 
+                        foreach (var incomes in Model.Users[i].Incomes)
+                        {
+                            uIncome += incomes.AmountIncome;
+                        }
+                    
+                        <td>@uIncome</td>
+
+                        var uExpense = 0;
+                        foreach (var expenses in Model.Users[i].Expenses)
+                        {
+                            uExpense += expenses.ExpenseAmount;
+                        }
+                        <td>@uExpense</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

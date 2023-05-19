@@ -1,0 +1,47 @@
+﻿@model List<FamilyAccounting.Data.Entities.Family>
+@inject FamilyAccounting.Data.Helpers.UserProvider userProv
+@{
+    foreach (var family in Model)
+    {
+        <h1>@family.FamilyName</h1>
+        <h3>Family Expenses
+            @{
+                var i = 0;
+                foreach (var user in @family.Users)
+                {
+                    if (user.Expenses != null)
+                    {
+                        foreach (var expense in user.Expenses)
+                        {
+                            i += expense.ExpenseAmount;
+                        }
+                    }
+                    
+                }
+                @i
+            }
+        </h3>
+        <h3>Family Incomes : 
+            @{
+                var j = 0;
+                foreach (var user in @family.Users)
+                {
+                    if(user.Incomes != null)
+                    {
+                        foreach (var income in user.Incomes)
+                        {
+                            j += income.AmountIncome;
+                        }
+                    }
+                }
+                @j
+            }
+        </h3>
+        
+        if (ViewBag.familyId == null)
+        {
+            <a class="btn btn-primary" asp-controller="Family" asp-action="JoinFamily" asp-route-familyid="@family.Id">Join Family</a>
+        }
+
+    }
+}

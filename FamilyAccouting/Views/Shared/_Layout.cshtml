@@ -1,0 +1,92 @@
+﻿@using System.Security.Claims
+@using FamilyAccounting.Data.Context;
+@using FamilyAccounting.Data.Entities;
+@using FamilyAccounting.Data.Helpers;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<User> UserManager
+@inject AppDbContext _context
+@inject UserProvider UserProvider 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FamilyAccouting</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FamilyAccouting.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Family" asp-action="Index">Families</a>             
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        @{
+                            if (User.HasClaim((claim) => claim.Type == ClaimTypes.NameIdentifier))
+                            {
+                                var user1 = _context.Users.FirstOrDefault(u => u.Id == UserProvider.UserId);
+                                if (user1.FamilyId != null)
+                                {
+
+
+                                    var IsFamilyExists = _context.Users.FirstOrDefault(u => u.Id == UserProvider.UserId).FamilyId != null;
+                                    if (IsFamilyExists)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Family" asp-action="Profile">Family Profile</a>
+                                        </li>
+                                    }
+                                }
+                                <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Family" asp-action="CreateFamily">Create Family</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="LogOut">LogOut</a>
+                                </li>
+                                var user = await UserManager.GetUserAsync(User);
+                                var avatar = user.PhotoUrl;
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark " asp-area="" asp-controller="Users" asp-action="Profile">
+                                        <img src=@avatar
+                                             class="rounded-circle"
+                                             height="35"
+                                             alt="Profile"
+                                             loading="lazy" />
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-primary" asp-area="" asp-controller="Users" asp-action="SignUp">Sign Up</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-light" asp-area="" asp-controller="Users" asp-action="SignIn">Sign In</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model FamilyAccouting.Models.CreateFamilyDto;
+@using FamilyAccounting.Data.Entities;
+<h1>Create family</h1>
+
+<form class="row g-3" style="width: 400px; margin: auto" asp-controller="Family" asp-action="CreateFamily"  method="post">
+    <div>
+        <input name="FamilyName" class="form-control" asp-for="FamilyName" type="text" placeholder="Family name" />
+        <span class="text-danger" asp-validation-for="FamilyName"></span>
+    </div>
+    <div>
+        <input name="Password" class="form-control" asp-for="Password" type="text" placeholder="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <input type="radio" name="CreatorType" value="@EUserType.Father"> Father
+        <input type="radio" name="CreatorType" value="@EUserType.Mother"> Mother
+          
+        
+
+    </div>
+    <button class="form-control" type="submit">Sign Up</button>
+    <a class="link-info" asp-controller="Users" asp-action="SignIn">Sign In</a>
+</form>

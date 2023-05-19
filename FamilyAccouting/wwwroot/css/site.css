@@ -1,0 +1,38 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/006/929/681/original/abstract-background-bokeh-circle-light-blue-abstract-blue-effect-background-light-blue-abstract-background-free-photo.jpg')
+}
+
+.table-container {
+    white-space: nowrap;
+}
+.table-container table {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    margin-right: -4px; 
+}
+
+.th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+.header {
+    background-color: #f8f9fa;
+}

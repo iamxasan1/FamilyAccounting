@@ -1,0 +1,83 @@
+﻿@model FamilyAccounting.Data.Entities.User
+
+<div class="d-flex justify-content-center" style="flex-wrap:wrap">
+
+    <div class=" row g-1 col-md-4" style="border-radius: 7px;
+    margin-top: 1rem;
+    padding: 3rem;
+padding: 1.5rem;
+    box-shadow: 0 0rem 3rem rgba(99, 0, 0, 0.8)!important;">
+        <div class="card-body" style="width: 3%">
+            <div class="center">
+                <div class="nima text-center">
+                    <img class="rounded-circle shadow-lg mx-auto ml-3" width="135" height="135" src="@Model.PhotoUrl">
+                </div>
+                <div class="text-center">
+                    <h3>Firstname: <span style="color:red">@Model.FirstName</span></h3>
+                   <h3>Lastname: <span style="color:red">@Model.LastName</span></h3>
+                    <h3>Role: <span style="color:red">@Model.UserType</span></h3>
+                </div>
+            </div>
+            <br />
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-danger" asp-controller="Users" asp-action="Logout">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<a class="btn btn-primary" asp-controller="Users" asp-action="AddIncome">Add income</a>
+<a class="btn btn-primary" asp-controller="Users" asp-action="AddExpense">Add Expense</a>
+<div class="table-container">
+    @{
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Income type</th>
+                    <th scope="col">Income amount</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Incomes.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@(i + 1)</th>
+                        <td>@Model.Incomes[i].IncomeType</td>
+                        <td>@Model.Incomes[i].AmountIncome</td>
+                        <td>@Model.Incomes[i].Description</td>
+                        <td>@Model.Incomes[i].CreatedAt</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @{
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Expense type</th>
+                    <th scope="col">Expense amount</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Expenses.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@(i + 1)</th>
+                        <td>@Model.Expenses[i].ExpenseType</td>
+                        <td>@Model.Expenses[i].ExpenseAmount</td>
+                        <td>@Model.Expenses[i].Description</td>
+                        <td>@Model.Expenses[i].CreatedAt</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

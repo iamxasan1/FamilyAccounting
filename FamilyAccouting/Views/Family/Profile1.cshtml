@@ -1,0 +1,19 @@
+﻿@using FamilyAccounting.Data.Entities
+@model DateDto
+
+<form class="row g-3" style="width: 400px; margin: auto" asp-controller="Family"
+      asp-action="Profile" asp-route-InputDate="dateDto" method="post">
+
+    <div>
+        <input name="From" class="form-control" asp-for="From" type="date" placeholder="StartDate" />
+        <span class="text-danger" asp-validation-for="From"></span>
+    </div>
+    <div>
+        <input name="To" class="form-control" asp-for="To" type="date" placeholder="EndDate" />
+        <span class="text-danger" asp-validation-for="To"></span>
+    </div>
+
+    <div>
+        <button class="form-control" type="submit">Filter</button>
+    </div>
+</form>

@@ -1,0 +1,17 @@
+﻿@model SignInUserDto;
+<h1>Sign in</h1>
+
+<form class="row g-3" style="width: 400px; margin: auto" asp-controller="Users" asp-action="SignIn" method="post">
+    <div>
+        <input name="Username" class="form-control" asp-for="Username" type="text" placeholder="Username" />
+        <span class="text-danger" asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <input name="Password" class="form-control" asp-for="Password" type="text" placeholder="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <button class="form-control" type="submit">Sign In</button>
+    </div>
+    <a class="link-info" asp-controller="Users" asp-action="SignUp">Sign Up</a>
+</form>

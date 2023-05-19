@@ -1,0 +1,26 @@
+type: Information. 5/11/2023 11:47 PM. message: Now listening on: https://localhost:7216 
+type: Information. 5/11/2023 11:47 PM. message: Now listening on: http://localhost:5149 
+type: Information. 5/11/2023 11:47 PM. message: Application started. Press Ctrl+C to shut down. 
+type: Information. 5/11/2023 11:47 PM. message: Hosting environment: Development 
+type: Information. 5/11/2023 11:47 PM. message: Content root path: C:\Users\iamxa\Desktop\I`m_A_Junior_Developer\FamilyAccounting(2-version)\LoggerAspNet\ 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Error. 5/11/2023 11:47 PM. message: Internal error occured while processing the requesting 
+type: Information. 5/12/2023 12:01 AM. message: Now listening on: https://localhost:7216 
+type: Information. 5/12/2023 12:01 AM. message: Now listening on: http://localhost:5149 
+type: Information. 5/12/2023 12:01 AM. message: Application started. Press Ctrl+C to shut down. 
+type: Information. 5/12/2023 12:01 AM. message: Hosting environment: Development 
+type: Information. 5/12/2023 12:01 AM. message: Content root path: C:\Users\iamxa\Desktop\I`m_A_Junior_Developer\FamilyAccounting(2-version)\LoggerAspNet\ 
+type: Information. 5/12/2023 1:00 AM. message: Now listening on: https://localhost:7216 
+type: Information. 5/12/2023 1:00 AM. message: Now listening on: http://localhost:5149 
+type: Information. 5/12/2023 1:00 AM. message: Application started. Press Ctrl+C to shut down. 
+type: Information. 5/12/2023 1:00 AM. message: Hosting environment: Development 
+type: Information. 5/12/2023 1:00 AM. message: Content root path: C:\Users\iamxa\Desktop\I`m_A_Junior_Developer\FamilyAccounting(2-version)\LoggerAspNet\ 
+type: Error. 5/12/2023 1:02 AM. message: Internal error occured while processing the requesting 
+type: Error. 5/12/2023 1:02 AM. message: Internal error occured while processing the requesting 
